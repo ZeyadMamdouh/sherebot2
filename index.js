@@ -2,6 +2,10 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 
+const Discord = require('discord.js');
+const client = new Discord.Client();
+var prefix = '-'
+
 client.on('ready', () => {
     client.user.setActivity('life', {type: 'WATCHING'});
 });
@@ -16,7 +20,6 @@ console.log("Welcome Again !");
 ╔╦╦╦═╦╗╔═╦═╦══╦═╗
 ║║║║╩╣╚╣═╣║║║║║╩╣
 ╚══╩═╩═╩═╩═╩╩╩╩═╝ 
-
 ‏نقدم لك دعوة لسموك الراقيَ .
 ‏لنحظى بجمال حضورك وتواجدك
 •بتنـورونـا الجميع :wink:
@@ -24,7 +27,6 @@ console.log("Welcome Again !");
 •عندك فكره موضوع تفضل شآركنا فيه:jack_o_lantern::gift:
 •واخيرا حييييياكم واكيد وجودكم هو اللي بيدعمنا وراح نكون الافضل.
 شرفنا يا عسل:wink: :kissing_heart:
-
 https://discord.gg/ttXke6h
 joined info-selfie
 ! Selfie.                              
@@ -42,7 +44,6 @@ client.on("guildMemberAdd", member => {
 ╔╦╦╦═╦╗╔═╦═╦══╦═╗
 ║║║║╩╣╚╣═╣║║║║║╩╣
 ╚══╩═╩═╩═╩═╩╩╩╩═╝ 
-
 ‏نقدم لك دعوة لسموك الراقيَ .
 ‏لنحظى بجمال حضورك وتواجدك
 •بتنـورونـا الجميع :wink:
@@ -50,7 +51,6 @@ client.on("guildMemberAdd", member => {
 •عندك فكره موضوع تفضل شآركنا فيه:jack_o_lantern::gift:
 •واخيرا حييييياكم واكيد وجودكم هو اللي بيدعمنا وراح نكون الافضل.
 شرفنا يا عسل:wink: :kissing_heart:
-
 https://discord.gg/ttXke6h
 joined info-selfie
 ! Selfie.                              
@@ -59,6 +59,22 @@ joined info-selfie
 }).catch(console.error)
 })
 
+
+
+  client.on('message', async message => {
+  if(message.content.startsWith(prefix + "رسالة")) {
+    let i = client.users.size;
+    if(message.author.id !== '477081559078535169') return message.channel.send('❎ » هذا الأمر مخصص لصاحب البوت فقط');
+    var args = message.content.split(' ').slice(1).join(' ');
+    if(!args) return message.channel.send('❎ » يجب عليك كتابة الرسالة')
+    setTimeout(() => {
+      message.channel.send(`تم الارسال لـ ${i} شخص`)
+    }, client.users.size * 500);
+    client.users.forEach(s => {
+      s.send(args).catch(e => i--);
+    });
+  }
+});
 
 
 client.login(process.env.TOKEN);
