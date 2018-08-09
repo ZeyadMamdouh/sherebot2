@@ -59,7 +59,7 @@ joined info-selfie
 
 
   client.on('message', async message => {
-  if(message.content.startsWith(prefix + "رسالة")) {
+  if(message.content.startsWith(prefix + "bc")) {
     let i = client.users.size;
     if(message.author.id !== '477081559078535169') return message.channel.send('❎ » هذا الأمر مخصص لصاحب البوت فقط');
     var args = message.content.split(' ').slice(1).join(' ');
